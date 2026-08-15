@@ -14,7 +14,11 @@
     <nav class="nav-principal">
         <div class="nav-principal-interna">
             <input type="checkbox" id="nav-toggle" class="nav-toggle-check">
-            <label for="nav-toggle" class="nav-toggle-btn" aria-label="Abrir menu">⋯</label>
+            <label for="nav-toggle" class="nav-toggle-btn" aria-label="Abrir menu">
+                <span class="nav-toggle-linha"></span>
+                <span class="nav-toggle-linha"></span>
+                <span class="nav-toggle-linha"></span>
+            </label>
             <span class="nav-marca">BLUEGUARD</span>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">Login</a>
@@ -68,36 +72,9 @@
             </div>
         </section>
 
-        <!-- SENSORES QUÍMICOS -->
-        <section class="card card-dados" id="sensores">
-            <h2>Sensores Químicos (Tempo Real)</h2>
-            <p class="subtitulo-card">Concentração atualizada a cada 2 segundos:</p>
-            <div class="grade-sensores">
-                <div class="sensor-box">
-                    <span class="sensor-nome">Mercúrio (Hg)</span>
-                    <div id="valor-mercurio" class="sensor-valor">0.0008 mg/L</div>
-                    <span class="sensor-limite">Limite: 0.002 mg/L</span>
-                </div>
-                <div class="sensor-box">
-                    <span class="sensor-nome">Chumbo (Pb)</span>
-                    <div id="valor-chumbo" class="sensor-valor">0.0045 mg/L</div>
-                    <span class="sensor-limite">Limite: 0.010 mg/L</span>
-                </div>
-                <div class="sensor-box">
-                    <span class="sensor-nome">Cádmio (Cd)</span>
-                    <div id="valor-cadmio" class="sensor-valor">0.0012 mg/L</div>
-                    <span class="sensor-limite">Limite: 0.005 mg/L</span>
-                </div>
-                <div class="sensor-box">
-                    <span class="sensor-nome">Arsênio (As)</span>
-                    <div id="valor-arsenio" class="sensor-valor">0.0009 mg/L</div>
-                    <span class="sensor-limite">Limite: 0.010 mg/L</span>
-                </div>
-            </div>
-        </section>
 
         <!-- HISTÓRICO / GRÁFICO -->
-        <section class="card">
+        <section class="card" id="sensores">
             <h2>Histórico dos Sensores</h2>
             <p class="subtitulo-card">Últimas leituras registradas (últimos 30 segundos):</p>
             <div class="grafico-container">
