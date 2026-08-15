@@ -25,6 +25,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Em celulares, background-attachment:fixed trava/engasga a rolagem
+   (principalmente no Safari do iPhone) — desativamos ali e a foto passa
+   a rolar normalmente junto com o conteúdo. */
+@media (max-width: 900px), (pointer: coarse) {
+    body { background-attachment: scroll; }
 }
 
 h1, h2, h3, .sensor-nome, .intensidade-valor { font-family: 'Sora', 'Segoe UI', sans-serif; }
@@ -197,7 +206,7 @@ header p { color: rgba(255, 255, 255, 0.8); font-size: 1.05rem; max-width: 520px
     background: var(--oceano-claro);
     color: var(--texto-principal);
     font-family: 'Inter', sans-serif;
-    font-size: 0.94rem;
+    font-size: 16px;
 }
 .login-card input:focus { outline: none; border-color: var(--oceano-medio); }
 .btn-login { margin-top: 20px; width: 100%; }
@@ -302,6 +311,7 @@ header p { color: rgba(255, 255, 255, 0.8); font-size: 1.05rem; max-width: 520px
     height: 100%;
     border: 0;
     filter: saturate(0.75) brightness(0.85) contrast(1.05);
+    pointer-events: none; /* é só decorativo — sem isso, arrastar o mapa no celular prende o dedo e trava a rolagem da página */
 }
 
 .mapa-overlay {
@@ -501,7 +511,7 @@ header p { color: rgba(255, 255, 255, 0.8); font-size: 1.05rem; max-width: 520px
 @media (max-width: 640px) {
     .nav-principal-interna { flex-wrap: nowrap; justify-content: flex-start; padding: 12px 14px; gap: 12px; }
     .nav-marca { font-size: 0.95rem; }
-    .nav-link { font-size: 0.82rem; padding: 8px 13px; }
+    .nav-link { font-size: 0.82rem; padding: 11px 14px; }
 }
 
 /* --- BREADCRUMB --- */
@@ -739,7 +749,7 @@ header p { color: rgba(255, 255, 255, 0.8); font-size: 1.05rem; max-width: 520px
     background: var(--oceano-claro);
     color: var(--texto-principal);
     font-family: 'Inter', sans-serif;
-    font-size: 0.94rem;
+    font-size: 16px;
 }
 .form-denuncia textarea { min-height: 90px; resize: vertical; }
 .form-linha select:focus,
@@ -794,6 +804,13 @@ footer {
     box-shadow: 0 -4px 16px rgba(7, 59, 76, 0.08);
 }
 
+/* No celular, rodapé fixo come espaço precioso de tela o tempo todo —
+   melhor deixar no fluxo normal, só no final da página. */
+@media (max-width: 760px) {
+    footer { position: static; margin-top: 20px; box-shadow: none; }
+    body { padding-bottom: 0; }
+}
+
 /* espaço reservado no fim da página pra nada ficar escondido atrás do rodapé fixo */
 body { padding-bottom: 54px; }
 
@@ -832,6 +849,12 @@ body { padding-bottom: 54px; }
     .contato-grade { grid-template-columns: 1fr; }
     .grade-sensores { grid-template-columns: 1fr 1fr; }
 
+    .mapa-simulado { height: 200px; }
+    .grafico-container { height: 190px; }
+    .timeline-lista { max-height: 220px; }
+    .botoes-mapa { width: 100%; }
+    .btn-perigo-mini, .btn-seguro-mini { flex: 1; text-align: center; padding: 11px 12px; }
+    .ponto-nome { font-size: 0.72rem; padding: 2px 7px; }
+
     footer { padding: 12px 14px; font-size: 0.74rem; }
-    body { padding-bottom: 46px; }
 }
