@@ -16,26 +16,36 @@
 
 body {
     font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-    background-image: linear-gradient(135deg, rgba(3, 15, 30, 0.82) 0%, rgba(8, 60, 110, 0.55) 45%, rgba(20, 150, 210, 0.35) 100%), url('assets/madre-de-deus.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
     color: var(--texto-principal);
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow-x: hidden;
     width: 100%;
+    position: relative;
 }
 
-/* Em celulares, background-attachment:fixed trava/engasga a rolagem
-   (principalmente no Safari do iPhone) — desativamos ali e a foto passa
-   a rolar normalmente junto com o conteúdo. Aproveitamos e deixamos o
-   véu mais fraco, pra foto aparecer mais forte na tela pequena. */
-@media (max-width: 900px), (pointer: coarse) {
-    body {
-        background-attachment: scroll;
+/* Fundo fixo do site inteiro: usamos um elemento próprio do tamanho exato
+   da tela (position:fixed + inset:0), em vez de "background-attachment:
+   fixed" no body. Isso evita dois problemas do celular: 1) a rolagem
+   travando/engasgando no Safari do iPhone, e 2) a foto esticando errado
+   em páginas compridas (já que o body pode ficar bem mais alto que a
+   tela, e o fundo antigo tentava cobrir a altura toda em vez de só a
+   tela visível). */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: linear-gradient(135deg, rgba(3, 15, 30, 0.82) 0%, rgba(8, 60, 110, 0.55) 45%, rgba(20, 150, 210, 0.35) 100%), url('assets/madre-de-deus.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 900px) {
+    /* na tela pequena, véu mais fraco pra foto aparecer mais forte */
+    body::before {
         background-image: linear-gradient(135deg, rgba(3, 15, 30, 0.62) 0%, rgba(8, 60, 110, 0.40) 45%, rgba(20, 150, 210, 0.22) 100%), url('assets/madre-de-deus.jpg');
     }
 }
