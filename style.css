@@ -273,7 +273,7 @@ header p { color: rgba(255, 255, 255, 0.8); font-size: 1.05rem; max-width: 520px
 .stat-numero { font-family: 'Sora', sans-serif; font-size: 1.7rem; font-weight: 700; color: var(--oceano-profundo); }
 .stat-label { display: block; font-size: 0.78rem; color: var(--texto-secundario); margin-top: 2px; }
 
-.dashboard-container { width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 25px; padding: 0 20px 20px; }
+.dashboard-container { width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 25px; padding: 25px 20px 20px; }
 
 .card {
     background-color: var(--branco-cartao);
