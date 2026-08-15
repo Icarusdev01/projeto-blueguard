@@ -16,7 +16,7 @@
 
 body {
     font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-    background-image: linear-gradient(135deg, rgba(7, 59, 76, 0.80) 0%, rgba(17, 138, 178, 0.55) 55%, rgba(6, 214, 160, 0.35) 100%), url('assets/madre-de-deus.jpg');
+    background-image: linear-gradient(135deg, rgba(3, 15, 30, 0.82) 0%, rgba(8, 60, 110, 0.55) 45%, rgba(20, 150, 210, 0.35) 100%), url('assets/madre-de-deus.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -31,9 +31,13 @@ body {
 
 /* Em celulares, background-attachment:fixed trava/engasga a rolagem
    (principalmente no Safari do iPhone) — desativamos ali e a foto passa
-   a rolar normalmente junto com o conteúdo. */
+   a rolar normalmente junto com o conteúdo. Aproveitamos e deixamos o
+   véu mais fraco, pra foto aparecer mais forte na tela pequena. */
 @media (max-width: 900px), (pointer: coarse) {
-    body { background-attachment: scroll; }
+    body {
+        background-attachment: scroll;
+        background-image: linear-gradient(135deg, rgba(3, 15, 30, 0.62) 0%, rgba(8, 60, 110, 0.40) 45%, rgba(20, 150, 210, 0.22) 100%), url('assets/madre-de-deus.jpg');
+    }
 }
 
 h1, h2, h3, .sensor-nome, .intensidade-valor { font-family: 'Sora', 'Segoe UI', sans-serif; }
@@ -512,36 +516,34 @@ header p { color: rgba(255, 255, 255, 0.8); font-size: 1.05rem; max-width: 520px
 /* checkbox invisível que controla o menu — some no desktop */
 .nav-toggle-check { display: none; }
 .nav-toggle-btn { display: none; }
+.nav-toggle-linha { display: none; }
 
 @media (max-width: 640px) {
     .nav-principal-interna {
         flex-wrap: nowrap;
-        justify-content: center;
+        justify-content: flex-start;
         padding: 12px 16px;
+        gap: 12px;
     }
-    .nav-marca { font-size: 1rem; flex: 1; text-align: center; }
+    .nav-marca { font-size: 1rem; text-align: left; }
 
     .nav-toggle-btn {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        font-size: 1.3rem;
-        font-weight: 700;
-        color: var(--oceano-profundo);
+        gap: 4px;
+        width: 30px;
+        height: 30px;
         cursor: pointer;
-        order: -1; /* fica à esquerda, antes da marca */
         flex-shrink: 0;
     }
-    .nav-toggle-btn:hover { background: rgba(17, 138, 178, 0.08); }
-
-    /* espaço fantasma do lado direito, pra marca ficar realmente centralizada */
-    .nav-principal-interna::after {
-        content: '';
-        width: 34px;
-        flex-shrink: 0;
+    .nav-toggle-linha {
+        display: block;
+        width: 22px;
+        height: 2.5px;
+        border-radius: 2px;
+        background: var(--oceano-profundo);
     }
 
     .nav-links {
@@ -634,14 +636,16 @@ header p { color: rgba(255, 255, 255, 0.8); font-size: 1.05rem; max-width: 520px
     color: #ffffff;
     margin: 0;
     max-width: 760px;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
 }
-.pagina-hero-titulo .destaque { color: var(--verde-recife); }
+.pagina-hero-titulo .destaque { color: #4FD1E8; }
 
 .pagina-hero-subtitulo {
-    color: rgba(255, 255, 255, 0.88);
+    color: rgba(255, 255, 255, 0.92);
     max-width: 600px;
     margin-top: 16px;
     font-size: 1.02rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .pagina-hero-botoes { display: flex; gap: 14px; margin-top: 28px; flex-wrap: wrap; justify-content: center; }
@@ -878,20 +882,20 @@ body { padding-bottom: 54px; }
 
 /* RESPONSIVO */
 @media (max-width: 600px) {
-    .stats-faixa { grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: -40px; }
+    .stats-faixa { grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: -40px; margin-bottom: 34px; }
     .stat-numero { font-size: 1.3rem; }
     header h1 { font-size: 2rem; }
     .card { padding: 18px; }
     .holograma-wrap { width: 130px; }
 
-    .pagina-hero { min-height: 46vh; padding: 40px 16px; }
+    .pagina-hero { min-height: 46vh; padding: 56px 16px 40px; }
     .pagina-hero-botoes { flex-direction: column; width: 100%; }
     .btn-hero-primario, .btn-hero-secundario { width: 100%; text-align: center; }
 
     .login-card { padding: 24px 20px; max-width: 100%; }
     .mascote-hero { width: min(180px, 50vw); }
 
-    .dashboard-container { gap: 26px; padding: 0 14px 14px; }
+    .dashboard-container { gap: 26px; padding: 6px 14px 14px; }
     .sensor-box { padding: 14px; }
     .sensor-valor { font-size: 1.4rem; }
 
