@@ -342,17 +342,17 @@ function gerenciarSimulador() {
 
     // Mensagens de orientação prática (a função também é usada pela página Comunidade)
     aplicarOrientacao(emRisco, nomesPontosEmRisco());
-    if (!emRisco) {
-        valorMercurio.style.color = ''; valorChumbo.style.color = ''; valorCadmio.style.color = ''; valorArsenio.style.color = '';
-    } else {
-        valorMercurio.style.color = '#E63946'; valorChumbo.style.color = '#E63946'; valorCadmio.style.color = '#E63946'; valorArsenio.style.color = '#E63946';
-    }
 
-    // Exibe os valores gerais
-    valorMercurio.innerText = `${geral.mercurio.toFixed(4)} mg/L ${emRisco ? '⚠️' : ''}`;
-    valorChumbo.innerText = `${geral.chumbo.toFixed(4)} mg/L ${emRisco ? '⚠️' : ''}`;
-    valorCadmio.innerText = `${geral.cadmio.toFixed(4)} mg/L ${emRisco ? '⚠️' : ''}`;
-    valorArsenio.innerText = `${geral.arsenio.toFixed(4)} mg/L ${emRisco ? '⚠️' : ''}`;
+    // Cor e texto dos cards de sensor (se essa página não tiver mais esses cards, não faz nada)
+    if (valorMercurio) {
+        const cor = emRisco ? '#E63946' : '';
+        valorMercurio.style.color = cor; valorChumbo.style.color = cor; valorCadmio.style.color = cor; valorArsenio.style.color = cor;
+
+        valorMercurio.innerText = `${geral.mercurio.toFixed(4)} mg/L ${emRisco ? '⚠️' : ''}`;
+        valorChumbo.innerText = `${geral.chumbo.toFixed(4)} mg/L ${emRisco ? '⚠️' : ''}`;
+        valorCadmio.innerText = `${geral.cadmio.toFixed(4)} mg/L ${emRisco ? '⚠️' : ''}`;
+        valorArsenio.innerText = `${geral.arsenio.toFixed(4)} mg/L ${emRisco ? '⚠️' : ''}`;
+    }
 
     // Atualiza detalhes do ponto selecionado, se houver
     atualizarDetalhesPonto();
