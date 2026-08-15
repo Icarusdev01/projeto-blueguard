@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidade - BlueGuard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="nav-principal">
+        <div class="nav-principal-interna">
+            <span class="nav-marca">🌊 BLUEGUARD</span>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Login</a>
+                <a href="painel.html" class="nav-link">Painel de Monitoramento</a>
+                <a href="comunidade.html" class="nav-link nav-ativo">Comunidade</a>
+                <a href="educacao.html" class="nav-link">Aprenda sobre os Metais</a>
+                <a href="contato.html" class="nav-link">Contato / Denúncia</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pagina-hero">
+        <h1 class="pagina-hero-titulo">Comunidade e <span class="destaque">Transparência</span></h1>
+        <p class="pagina-hero-subtitulo">Orientações práticas, canal de denúncia e dados abertos para quem vive e trabalha na orla de Madre de Deus.</p>
+        <div class="pagina-hero-botoes">
+            <a href="#denuncia" class="btn-hero-primario">Fazer uma Denúncia</a>
+            <a href="painel.html" class="btn-hero-secundario">Ver Painel</a>
+        </div>
+    </section>
+
+    <main class="dashboard-container">
+
+        <!-- PAINEL DE ORIENTAÇÃO À COMUNIDADE -->
+        <section class="card">
+            <h2>Canais de Orientação Direta</h2>
+            <p class="subtitulo-card">Atualizado automaticamente com base no status mais recente do painel de monitoramento:</p>
+            <div class="grade-orientacao">
+                <div class="orientacao-box">
+                    <h3>⚓ Para Pescadores e Marisqueiras</h3>
+                    <p id="orientacao-pesca">Navegação e coleta liberadas em toda a região costeira. Qualidade excelente do pescado.</p>
+                </div>
+                <div class="orientacao-box">
+                    <h3>🛒 Para Consumidores</h3>
+                    <p id="orientacao-consumidor">Frutos do mar e peixes locais testados e 100% seguros para consumo e comércio regional.</p>
+                </div>
+            </div>
+            <p class="info-dados">*Abra o <a href="painel.html">Painel de Monitoramento</a> em uma aba pra simular um vazamento e ver essas orientações mudarem em tempo real aqui.</p>
+        </section>
+
+        <!-- CANAL DE DENÚNCIA CIDADÃ -->
+        <section class="card" id="denuncia">
+            <h2>Canal de Denúncia Cidadã</h2>
+            <p class="subtitulo-card">Viu algo suspeito na água? Envie uma foto e um relato — sua denúncia entra no painel de fiscalização:</p>
+
+            <form id="form-denuncia" class="form-denuncia">
+                <label for="foto-denuncia" class="upload-box" id="upload-box">
+                    <img id="preview-foto" class="preview-foto" style="display:none;" alt="Pré-visualização da foto enviada">
+                    <span id="upload-texto" class="upload-texto">📷 Clique para enviar uma foto</span>
+                    <input type="file" id="foto-denuncia" accept="image/*" hidden>
+                </label>
+
+                <div class="form-linha">
+                    <select id="local-denuncia" required>
+                        <option value="" disabled selected>Local da ocorrência</option>
+                        <option value="Praia da Coroa">Ponto 01 - Praia da Coroa</option>
+                        <option value="Praia do Cação">Ponto 02 - Praia do Cação</option>
+                        <option value="Praia do Suape">Ponto 03 - Praia do Suape</option>
+                        <option value="Outro local">Outro local</option>
+                    </select>
+                </div>
+
+                <textarea id="descricao-denuncia" placeholder="Descreva o que você viu (ex: água com coloração estranha, peixes mortos, despejo irregular...)" required></textarea>
+
+                <button type="submit" class="btn btn-perigo-mini btn-denuncia">Enviar Denúncia</button>
+            </form>
+
+            <div id="lista-denuncias" class="lista-denuncias">
+                <p id="sem-denuncias" class="sem-denuncias">Nenhuma denúncia registrada ainda.</p>
+            </div>
+        </section>
+
+        <!-- EXPORTAÇÃO DE DADOS PARA ÓRGÃOS AMBIENTAIS -->
+        <section class="card">
+            <h2>Fornecimento de Dados Ambientais (Transparência)</h2>
+            <p class="subtitulo-card">Relatórios automáticos estruturados para envio ao IMA ou IBAMA:</p>
+            <div class="dados-orgaos">
+                <button class="btn btn-seguro" id="btn-download" style="max-width: 300px;">📂 Baixar Relatório Técnico (.CSV)</button>
+                <p class="info-dados">*Inclui histórico de leituras registradas na sessão, coordenadas geográficas dos sensores e validação de limites do CONAMA.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>BlueGuard &copy; 2026 - Projeto Escolar de Monitoramento Ambiental</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

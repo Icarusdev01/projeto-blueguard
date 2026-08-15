@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueGuard - Acesso</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="nav-principal">
+        <div class="nav-principal-interna">
+            <span class="nav-marca">🌊 BLUEGUARD</span>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link nav-ativo">Login</a>
+                <a href="painel.html" class="nav-link">Painel de Monitoramento</a>
+                <a href="comunidade.html" class="nav-link">Comunidade</a>
+                <a href="educacao.html" class="nav-link">Aprenda sobre os Metais</a>
+                <a href="contato.html" class="nav-link">Contato / Denúncia</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="holograma-hero">
+        <div class="hero-coluna hero-coluna-marca">
+            <video id="video-holograma" class="mascote-holograma mascote-hero" loop playsinline muted>
+                <source src="assets/blueguard-mascote.mp4" type="video/mp4">
+            </video>
+            <p class="holograma-subtitulo">Conheça a gotinha guardiã que representa o projeto.</p>
+            <button id="btn-audio-holograma" class="btn-audio-holograma">🔇 Ativar Áudio</button>
+        </div>
+
+        <form id="form-login" class="login-card">
+            <h2>Acessar o Sistema</h2>
+            <p class="login-subtitulo">Entre para acompanhar o monitoramento em tempo real.</p>
+
+            <label for="login-email">E-mail</label>
+            <input type="email" id="login-email" placeholder="seuemail@exemplo.com" required>
+
+            <label for="login-senha">Senha</label>
+            <input type="password" id="login-senha" placeholder="••••••••" required>
+
+            <button type="submit" class="btn btn-seguro btn-login">Entrar</button>
+
+            <p class="login-aviso">*Login simulado para fins escolares — nenhum dado é enviado, armazenado ou verificado por um servidor.</p>
+        </form>
+    </section>
+
+    <p class="holograma-aviso holograma-aviso-rodape">*Navegadores bloqueiam vídeos com áudio automático — por isso ele começa mudo. Clique no botão acima para ligar o som.</p>
+
+    <footer>
+        <p>BlueGuard &copy; 2026 - Projeto Escolar de Monitoramento Ambiental</p>
+    </footer>
+
+    <script>
+        const video = document.getElementById('video-holograma');
+        const btnAudio = document.getElementById('btn-audio-holograma');
+
+        btnAudio.addEventListener('click', () => {
+            video.muted = !video.muted;
+            video.play();
+            btnAudio.innerText = video.muted ? '🔇 Ativar Áudio' : '🔊 Áudio Ativado';
+        });
+
+        video.play().catch(() => {
+            // autoplay pode ser bloqueado em alguns navegadores; o usuário pode clicar no vídeo para iniciar
+        });
+
+        // --- LOGIN SIMULADO: apenas encaminha para o painel ---
+        const formLogin = document.getElementById('form-login');
+
+        formLogin.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // não guarda e-mail/senha em nenhum lugar — é só uma simulação
+            formLogin.reset();
+
+            const botao = formLogin.querySelector('.btn-login');
+            botao.innerText = 'Acessando...';
+            botao.disabled = true;
+
+            setTimeout(() => {
+                window.location.href = 'painel.html';
+            }, 700);
+        });
+    </script>
+
+</body>
+</html>

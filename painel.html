@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueGuard - Simulador de Monitoramento Ambiental</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="nav-principal">
+        <div class="nav-principal-interna">
+            <span class="nav-marca">🌊 BLUEGUARD</span>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Login</a>
+                <a href="painel.html" class="nav-link nav-ativo">Painel de Monitoramento</a>
+                <a href="comunidade.html" class="nav-link">Comunidade</a>
+                <a href="educacao.html" class="nav-link">Aprenda sobre os Metais</a>
+                <a href="contato.html" class="nav-link">Contato / Denúncia</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pagina-hero">
+        <h1 class="pagina-hero-titulo">Monitoramento Inteligente<br><span class="destaque">de Metais Pesados</span></h1>
+        <p class="pagina-hero-subtitulo">Conectando comunidade, tecnologia e dados para proteger as praias de Madre de Deus da contaminação por metais pesados.</p>
+        <div class="pagina-hero-botoes">
+            <a href="#sensores" class="btn-hero-primario">Ver Sensores em Tempo Real</a>
+            <a href="comunidade.html#denuncia" class="btn-hero-secundario">Fazer uma Denúncia</a>
+        </div>
+    </section>
+
+    <div class="stats-faixa">
+        <div class="stat-card">
+            <span class="stat-numero">03</span>
+            <span class="stat-label">Pontos monitorados</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-numero">24/7</span>
+            <span class="stat-label">Monitoramento contínuo</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-numero">4</span>
+            <span class="stat-label">Metais rastreados</span>
+        </div>
+    </div>
+
+    <main class="dashboard-container">
+
+        <!-- STATUS GERAL -->
+        <section class="card card-alerta">
+            <h2>Status Geral do Ecossistema</h2>
+            <div id="alerta-box" class="alerta-seguro">
+                <span class="status-icone">🟢</span>
+                <span id="alerta-texto">SISTEMA OPERACIONAL: ÁGUAS PRÓPRIAS PARA PESCA E MARISCAGEM</span>
+            </div>
+            <div class="intensidade-container">
+                <span class="intensidade-label">Intensidade da contaminação</span>
+                <div class="intensidade-barra">
+                    <div id="intensidade-fill" class="intensidade-fill"></div>
+                </div>
+                <span id="intensidade-valor" class="intensidade-valor">0%</span>
+            </div>
+        </section>
+
+        <!-- SENSORES QUÍMICOS -->
+        <section class="card card-dados" id="sensores">
+            <h2>Sensores Químicos (Tempo Real)</h2>
+            <p class="subtitulo-card">Concentração atualizada a cada 2 segundos:</p>
+            <div class="grade-sensores">
+                <div class="sensor-box">
+                    <span class="sensor-nome">Mercúrio (Hg)</span>
+                    <div id="valor-mercurio" class="sensor-valor">0.0008 mg/L</div>
+                    <span class="sensor-limite">Limite: 0.002 mg/L</span>
+                </div>
+                <div class="sensor-box">
+                    <span class="sensor-nome">Chumbo (Pb)</span>
+                    <div id="valor-chumbo" class="sensor-valor">0.0045 mg/L</div>
+                    <span class="sensor-limite">Limite: 0.010 mg/L</span>
+                </div>
+                <div class="sensor-box">
+                    <span class="sensor-nome">Cádmio (Cd)</span>
+                    <div id="valor-cadmio" class="sensor-valor">0.0012 mg/L</div>
+                    <span class="sensor-limite">Limite: 0.005 mg/L</span>
+                </div>
+                <div class="sensor-box">
+                    <span class="sensor-nome">Arsênio (As)</span>
+                    <div id="valor-arsenio" class="sensor-valor">0.0009 mg/L</div>
+                    <span class="sensor-limite">Limite: 0.010 mg/L</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- HISTÓRICO / GRÁFICO -->
+        <section class="card">
+            <h2>Histórico dos Sensores</h2>
+            <p class="subtitulo-card">Últimas leituras registradas (últimos 30 segundos):</p>
+            <div class="grafico-container">
+                <div id="grafico-historico"></div>
+            </div>
+            <div class="grafico-legenda">
+                <span><span class="legenda-linha" style="background:#118AB2;"></span> Mercúrio (Hg)</span>
+                <span><span class="legenda-linha" style="background:#E8A33D;"></span> Chumbo (Pb)</span>
+                <span><span class="legenda-linha" style="background:#EF476F;"></span> Cádmio (Cd)</span>
+                <span><span class="legenda-linha" style="background:#7B2CBF;"></span> Arsênio (As)</span>
+            </div>
+        </section>
+
+        <!-- MAPA DE RISCO COM PAINEL DE CONTROLE INTEGRADO -->
+        <section class="card">
+            <h2>Mapa de Risco - Costa de Madre de Deus</h2>
+            <p class="subtitulo-card">Clique em um ponto para ver os dados daquele sensor. Comandos do simulador abaixo:</p>
+
+            <div class="mapa-simulado">
+                <iframe
+                    class="mapa-iframe"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-38.6350%2C-12.7550%2C-38.6000%2C-12.7300&layer=mapnik"
+                    loading="lazy"
+                    title="Mapa real de Madre de Deus, Bahia"
+                ></iframe>
+                <div class="mapa-overlay"></div>
+
+                <div class="ponto-sensor" id="ponto-ponte" data-ponto="ponte" style="top: 25%; left: 20%;" tabindex="0">
+                    <span class="ponto-dot"></span>
+                    <span class="ponto-nome">Ponto 01 - Praia da Coroa</span>
+                </div>
+                <div class="ponto-sensor" id="ponto-porto" data-ponto="porto" style="top: 45%; left: 65%;" tabindex="0">
+                    <span class="ponto-dot"></span>
+                    <span class="ponto-nome">Ponto 02 - Praia do Cação</span>
+                </div>
+                <div class="ponto-sensor" id="ponto-maranduba" data-ponto="maranduba" style="top: 72%; left: 40%;" tabindex="0">
+                    <span class="ponto-dot"></span>
+                    <span class="ponto-nome">Ponto 03 - Praia do Suape</span>
+                </div>
+            </div>
+
+            <!-- PAINEL DE DETALHES DO PONTO SELECIONADO -->
+            <div id="detalhes-ponto" class="detalhes-ponto detalhes-oculto">
+                <div class="detalhes-cabecalho">
+                    <h3 id="detalhes-nome">Selecione um ponto</h3>
+                    <button id="detalhes-fechar" class="detalhes-fechar" aria-label="Fechar detalhes">✕</button>
+                </div>
+                <div class="detalhes-grade">
+                    <div class="detalhes-item">
+                        <span>Hg</span>
+                        <strong id="detalhes-mercurio">--</strong>
+                    </div>
+                    <div class="detalhes-item">
+                        <span>Pb</span>
+                        <strong id="detalhes-chumbo">--</strong>
+                    </div>
+                    <div class="detalhes-item">
+                        <span>Cd</span>
+                        <strong id="detalhes-cadmio">--</strong>
+                    </div>
+                    <div class="detalhes-item">
+                        <span>As</span>
+                        <strong id="detalhes-arsenio">--</strong>
+                    </div>
+                </div>
+                <p id="detalhes-status" class="detalhes-status"></p>
+            </div>
+
+            <!-- Rodapé do Mapa: Legenda na esquerda e Botões de Ação na direita -->
+            <div class="mapa-controles-container">
+                <div class="mapa-legenda">
+                    <span><span class="legenda-cor seguro"></span> Seguro</span>
+                    <span><span class="legenda-cor perigo"></span> Risco Crítico</span>
+                </div>
+                <div class="botoes-mapa">
+                    <button id="btn-vazamento" class="btn btn-perigo-mini">Simular Despejo</button>
+                    <button id="btn-reset" class="btn btn-seguro-mini">Normalizar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- LINHA DO TEMPO DE EVENTOS -->
+        <section class="card">
+            <h2>Linha do Tempo de Eventos</h2>
+            <p class="subtitulo-card">Registro automático de ocorrências do sistema:</p>
+            <ul id="timeline-lista" class="timeline-lista">
+                <li class="timeline-item timeline-info">
+                    <span class="timeline-hora">--:--:--</span>
+                    <span class="timeline-texto">Sistema iniciado. Aguardando leituras...</span>
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>BlueGuard &copy; 2026 - Projeto Escolar de Monitoramento Ambiental</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

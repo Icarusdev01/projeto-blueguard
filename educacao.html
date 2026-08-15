@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educação Ambiental - BlueGuard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="nav-principal">
+        <div class="nav-principal-interna">
+            <span class="nav-marca">🌊 BLUEGUARD</span>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Login</a>
+                <a href="painel.html" class="nav-link">Painel de Monitoramento</a>
+                <a href="comunidade.html" class="nav-link">Comunidade</a>
+                <a href="educacao.html" class="nav-link nav-ativo">Aprenda sobre os Metais</a>
+                <a href="contato.html" class="nav-link">Contato / Denúncia</a>
+            </div>
+        </div>
+    </nav>
+
+    <nav class="breadcrumb" aria-label="Caminho de navegação">
+        <a href="painel.html">Painel</a>
+        <span>›</span>
+        <span class="atual">Educação</span>
+    </nav>
+
+    <section class="pagina-hero">
+        <h1 class="pagina-hero-titulo">Entenda os<br><span class="destaque">Metais Pesados</span></h1>
+        <p class="pagina-hero-subtitulo">Conheça os quatro metais monitorados pelo BlueGuard, de onde eles vêm, como afetam a saúde e o meio ambiente, e quais são os limites legais de segurança na água.</p>
+        <div class="pagina-hero-botoes">
+            <a href="#metais" class="btn-hero-primario">Ver os 4 Metais</a>
+            <a href="painel.html" class="btn-hero-secundario">Voltar ao Painel</a>
+        </div>
+    </section>
+
+    <main class="grade-metais" id="metais">
+        <a href="metal-mercurio.html" class="metal-card">
+            <div class="metal-simbolo hg">Hg</div>
+            <h3>Mercúrio</h3>
+            <p>Contamina peixes e afeta o sistema nervoso.</p>
+        </a>
+        <a href="metal-chumbo.html" class="metal-card">
+            <div class="metal-simbolo pb">Pb</div>
+            <h3>Chumbo</h3>
+            <p>Prejudica o desenvolvimento infantil.</p>
+        </a>
+        <a href="metal-cadmio.html" class="metal-card">
+            <div class="metal-simbolo cd">Cd</div>
+            <h3>Cádmio</h3>
+            <p>Se acumula nos rins ao longo dos anos.</p>
+        </a>
+        <a href="metal-arsenio.html" class="metal-card">
+            <div class="metal-simbolo as">As</div>
+            <h3>Arsênio</h3>
+            <p>Associado a câncer e problemas de pele.</p>
+        </a>
+    </main>
+
+    <footer>
+        <p>BlueGuard &copy; 2026 - Projeto Escolar de Monitoramento Ambiental</p>
+    </footer>
+
+</body>
+</html>
