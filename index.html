@@ -8,6 +8,55 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Luckiest+Guy&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Centralização do holograma e botão */
+        .hero-coluna-marca {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .mascote-holograma {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .form-ativar-holograma {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        /* Botão gradiente em tamanho menor */
+        #btn-olablueguard {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.95rem; /* Tamanho do texto reduzido */
+            font-weight: 700;
+            color: #ffffff;
+            background: linear-gradient(90deg, #0093c4 0%, #00a887 50%, #1db954 100%);
+            border: none;
+            padding: 10px 28px; /* Padding menor */
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+            display: inline-block;
+        }
+
+        #btn-olablueguard:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        #btn-olablueguard:active {
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
 
@@ -37,15 +86,9 @@
             </video>
             <p class="holograma-subtitulo">Conheça a gotinha guardiã que representa o projeto.</p>
 
-            <form id="form-ativar-holograma" class="form-ativar-holograma">
-                <input
-                    type="text"
-                    id="frase-holograma"
-                    placeholder="Digite: Olá BlueGuard"
-                    autocomplete="off"
-                >
-                <button type="submit">Enviar</button>
-            </form>
+            <div class="form-ativar-holograma">
+                <button type="button" id="btn-olablueguard">Olá BlueGuard</button>
+            </div>
             <p id="aviso-holograma" class="aviso-holograma"></p>
         </div>
 
@@ -73,51 +116,27 @@
 
     <script>
         const video = document.getElementById('video-holograma');
-        const formAtivar = document.getElementById('form-ativar-holograma');
-        const inputFrase = document.getElementById('frase-holograma');
+        const btnOla = document.getElementById('btn-olablueguard');
         const avisoHolograma = document.getElementById('aviso-holograma');
 
-        // Aceita "olá blueguard", "ola blueguard", "oi blueguard" — sem
-        // diferenciar maiúsculas/minúsculas ou acento.
-        function normalizar(texto) {
-            return texto
-                .toLowerCase()
-                .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // remove acentos
-                .trim();
-        }
-        const frasesAceitas = ['ola blueguard', 'oi blueguard'];
-
-        // O vídeo começa parado (só o primeiro quadro aparece).
-        // Só toca — com som — quando a pessoa digita a frase certa.
-        formAtivar.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            if (frasesAceitas.includes(normalizar(inputFrase.value))) {
-                video.muted = false;
-                video.play();
-                formAtivar.style.display = 'none';
-                avisoHolograma.innerText = '🔊 Reproduzindo...';
-                avisoHolograma.classList.remove('aviso-erro');
-                video.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            } else {
-                avisoHolograma.innerText = '❌ Não reconheci — tente "Olá BlueGuard"';
-                avisoHolograma.classList.add('aviso-erro');
-                inputFrase.value = '';
-            }
+        btnOla.addEventListener('click', () => {
+            video.muted = false;
+            video.play();
+            btnOla.style.display = 'none';
+            avisoHolograma.innerText = '🔊 Reproduzindo...';
+            video.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
 
-        // Quando o vídeo termina (toca só uma vez, sem loop), avisa que acabou.
         video.addEventListener('ended', () => {
             avisoHolograma.innerText = '✅ Concluído';
+            btnOla.style.display = 'inline-block';
         });
 
-        // --- LOGIN SIMULADO: apenas encaminha para o painel ---
         const formLogin = document.getElementById('form-login');
 
         formLogin.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            // não guarda e-mail/senha em nenhum lugar — é só uma simulação
             formLogin.reset();
 
             const botao = formLogin.querySelector('.btn-login');
