@@ -181,19 +181,41 @@ header p { color: rgba(255, 255, 255, 0.8); font-size: 1.05rem; max-width: 520px
 
 .holograma-subtitulo { color: rgba(255, 255, 255, 0.85); font-size: 0.92rem; text-align: center; max-width: 320px; margin-top: 4px; }
 
-.btn-audio-holograma {
-    background: rgba(255, 255, 255, 0.15);
+.form-ativar-holograma {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+    width: 100%;
+    max-width: 300px;
+}
+.form-ativar-holograma input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 14px;
+    border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.15);
     color: #fff;
-    padding: 9px 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; /* evita zoom automático no iPhone ao focar */
+}
+.form-ativar-holograma input::placeholder { color: rgba(255, 255, 255, 0.65); }
+.form-ativar-holograma input:focus { outline: none; border-color: #fff; background: rgba(255, 255, 255, 0.22); }
+.form-ativar-holograma button {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--oceano-profundo);
+    border: none;
+    padding: 10px 18px;
     border-radius: 999px;
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    margin-top: 6px;
-    transition: background 0.2s;
+    transition: opacity 0.2s;
 }
-.btn-audio-holograma:hover { background: rgba(255, 255, 255, 0.25); }
+.form-ativar-holograma button:hover { opacity: 0.85; }
+
+.aviso-holograma { color: rgba(255, 255, 255, 0.85); font-size: 0.85rem; margin-top: 10px; min-height: 1.2em; }
+.aviso-holograma.aviso-erro { color: #FF8B8B; font-weight: 600; }
 
 /* CARD DE LOGIN - estilo "vidro" sobre a foto, integrado à cena */
 .login-card {
