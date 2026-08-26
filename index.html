@@ -98,6 +98,7 @@
                 formAtivar.style.display = 'none';
                 avisoHolograma.innerText = '🔊 Reproduzindo...';
                 avisoHolograma.classList.remove('aviso-erro');
+                video.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
                 avisoHolograma.innerText = '❌ Não reconheci — tente "Olá BlueGuard"';
                 avisoHolograma.classList.add('aviso-erro');
